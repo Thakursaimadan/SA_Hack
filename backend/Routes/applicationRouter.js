@@ -27,4 +27,6 @@ ApplicationRouter.get('/for/:internshipId', authenticate, checkRole('employer'),
   res.json(apps);
 });
 
+
+
 export default ApplicationRouter;

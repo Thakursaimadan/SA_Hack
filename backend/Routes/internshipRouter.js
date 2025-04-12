@@ -5,13 +5,16 @@ import { authenticate, checkRole } from '../middleware/auth.js';
 const InternshipRouter = express.Router();
 
 InternshipRouter.get('/', async (req, res) => {
-  const { location, role } = req.query;
-  const filter = {};
-  if (location) filter.location = location;
-  if (role) filter.role = role;
-  const internships = await Internship.find(filter).sort({ createdAt: -1 });
-  res.json(internships);
-});
+    console.log("GET /api/internships route hit");
+    try {
+      const internships = await Internship.find().populate('createdBy', 'name');
+      res.json(internships);
+    } catch (error) {
+      console.error("Error in /api/internships:", error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+  
 
 InternshipRouter.get('/:id', async (req, res) => {
   const internship = await Internship.findById(req.params.id);
@@ -19,6 +22,7 @@ InternshipRouter.get('/:id', async (req, res) => {
 });
 
 InternshipRouter.post('/', authenticate, checkRole('employer'), async (req, res) => {
+    console.log("reached here");
   const { title, companyName, description, location, role } = req.body;
   const internship = new Internship({ title, companyName, description, location, role, createdBy: req.user._id });
   await internship.save();

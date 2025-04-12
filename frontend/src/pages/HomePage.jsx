@@ -1,6 +1,6 @@
 // pages/HomePage.jsx
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios.js'
 import InternshipCard from '../components/InternshipCard'
 
 export default function HomePage() {
@@ -10,7 +10,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchInternships = async () => {
       try {
-        const res = await axios.get('/api/internships')
+        const res = await axios.get('/api/internships/')
         setInternships(res.data)
       } catch (error) {
         console.error(error)

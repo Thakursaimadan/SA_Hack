@@ -1,6 +1,5 @@
-// pages/CreateInternship.jsx
 import { useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios.js'
 import { useNavigate } from 'react-router-dom'
 
 export default function CreateInternship() {
@@ -33,10 +32,50 @@ export default function CreateInternship() {
             required
             className="w-full p-2 border rounded"
             value={formData.title}
-            onChange={(e) => setFormData({...formData, title: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           />
         </div>
-        {/* Add other form fields similarly */}
+
+        <div>
+          <label className="block mb-2">Company Name</label>
+          <input
+            required
+            className="w-full p-2 border rounded"
+            value={formData.companyName}
+            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label className="block mb-2">Description</label>
+          <textarea
+            required
+            className="w-full p-2 border rounded"
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label className="block mb-2">Location</label>
+          <input
+            required
+            className="w-full p-2 border rounded"
+            value={formData.location}
+            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label className="block mb-2">Role</label>
+          <input
+            required
+            className="w-full p-2 border rounded"
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+          />
+        </div>
+
         <button
           type="submit"
           className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
