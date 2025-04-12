@@ -3,9 +3,13 @@ import { useEffect, useState } from 'react'
 import axios from '../../axios.js'
 import InternshipCard from '../components/InternshipCard'
 
+
+
 export default function HomePage() {
   const [internships, setInternships] = useState([])
   const [loading, setLoading] = useState(true)
+
+  
 
   useEffect(() => {
     const fetchInternships = async () => {
