@@ -28,7 +28,8 @@ export default function HomePage() {
         <p>Loading...</p>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {internships.map(internship => (
+
+          {internships && internships.map(internship => (
             <InternshipCard key={internship._id} internship={internship} />
           ))}
         </div>
